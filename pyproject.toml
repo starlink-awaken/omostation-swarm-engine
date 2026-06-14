@@ -8,6 +8,9 @@ version = "1.0.0"
 description = "群体智能引擎 — 拍卖/竞价/DAG/生命周期的多智能体任务编排"
 requires-python = ">=3.10"
 license = {text = "MIT"}
+dependencies = [
+    "redis>=8.0.0",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/swarm_engine"]
