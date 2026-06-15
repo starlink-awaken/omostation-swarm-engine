@@ -53,6 +53,7 @@ Tags:
 
 import logging
 import os
+import shlex
 import subprocess
 import threading
 import time
@@ -269,8 +270,7 @@ class UniversalWorker(AgentDaemonBase):
         _log.info("[>] direct_exec: %s (cwd=%s, timeout=%ss)", command, cwd, timeout)
         try:
             result = subprocess.run(  # noqa: S602
-                command,
-                shell=True,
+                shlex.split(command),
                 capture_output=True,
                 text=True,
                 timeout=timeout,

@@ -14,6 +14,7 @@ Authority: nucleus/Z-Core/L0-Genome/R0-ACT-SYS-AX01-05_microkernel_fractal_axiom
 import json
 import logging
 import os
+import shlex
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -97,8 +98,7 @@ class SynapseHub:
 
         try:
             result = subprocess.run(  # noqa: S602
-                final_cmd,
-                shell=True,
+                shlex.split(final_cmd),
                 capture_output=True,
                 text=True,
                 timeout=spec.get("timeout", 300),
